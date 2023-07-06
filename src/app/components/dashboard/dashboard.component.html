@@ -36,7 +36,15 @@
             <div class="p-2 shadow border">
               <div class="input-group row ps-3">
                 <div class="card col-md-10 border-0">{{ task.taskName }}</div>
-                <button class="btn btn-outline-primary col me-2">e</button>
+                <button
+                  class="btn btn-outline-primary col me-2"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                  type="button"
+                  (click)="call(task)"
+                >
+                  Edit
+                </button>
                 <div
                   class="btn btn-outline-danger col"
                   (click)="deleteTask(task)"
@@ -44,6 +52,64 @@
                   X
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Task</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <div class="input-group p-4">
+                  <input
+                    name="task"
+                    [(ngModel)]="addTaskValue"
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter task"
+                    aria-label="Recipient's username"
+                    aria-describedby="button-addon2"
+                    [(ngModel)]="editTaskValue"
+                  />
+                  <button
+                    class="btn btn-outline-success"
+                    type="button"
+                    data-bs-dismiss="modal"
+                    id="button-addon2"
+                    (click)="editTask()"
+                  >
+                    Update
+                  </button>
+                </div>
+              </div>
+              <!-- <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button type="button" class="btn btn-primary">
+                  Save changes
+                </button>
+              </div> -->
             </div>
           </div>
         </div>
